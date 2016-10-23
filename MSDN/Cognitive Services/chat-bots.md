@@ -104,5 +104,104 @@ Após entrar na página inicial da aplicação, clique em **App Settings**, no c
 
 ![](./img/pic-011.png) 
 
+Em seu projeto no Visual Studio não esqueça de configurar as chaves **MicrosoftAppId** e **MicrosoftAppPassword** no arquivo *Web.config*, geradas no momento de criação do bot no portal do Bot Framework.
 
+```xml
+<appSettings>
+    <!-- update these with your BotId, Microsoft App Id and your Microsoft App Password-->
+    <add key="BotId" value="YourBotId" />
+    <add key="MicrosoftAppId" value="YourAppIdHere" />
+    <add key="MicrosoftAppPassword" value="YourAppPasswordHere" />
+</appSettings>
+```
 
+Crie uma nova classe em seu projeto chamada *RootLuisDialog.cs* que utiliza uma interface de diálogo específica para o LUIS.
+
+```c#
+[LuisModel("Your App Id here", "Your subscription key here")]
+[Serializable]
+public class RootLuisDialog : LuisDialog<object>
+{
+    [LuisIntent("None")]
+    public async Task NoneAsync(IDialogContext context, LuisResult result)
+    {
+        await context.PostAsync("Desculpe, eu não entendi...");
+	context.Wait(MessageReceived);
+    }
+}
+```
+
+No atributo **LuisModel**, você deve definir o App Id da sua aplicação LUIS e sua subscription key, como mostrado anteriormente. As duas chaves que você copiou devem ser usadas neste atributo.
+
+Uma Intent (ou intenção), como mostrado anteriormente, é uma definição de uma ação que você deseja. Por exemplo, dentro da nossa aplicação *MyChatBot*, foi criado uma intenção chamada *“listar”*. Esta intenção tem como objetivo listar todos os itens.
+
+![](./img/pic-012.png) 
+
+No atributo **LuisIntent** da classe *RootLuisDialog.cs*, você define sua Intent criada na sua aplicação LUIS. Para cada Intent, você define uma Task assíncrona. Quando o usuário digita um texto, o LUIS determina qual Intent esse texto mais se aproxima e redireciona para a sua Task e executa. Neste caso, iremos criar uma Task para a Intent *“listar”*.
+
+```c#
+[LuisIntent("listar")]
+public async Task ListarAsync(IDialogContext context, LuisResult result)
+{
+     await context.PostAsync("Produto A, Produto B e Produto C."); 
+     context.Wait(MessageReceived);
+}
+```
+
+Dentro da classe* MessagesController.cs*, que é criada automaticamente quando você cria uma nova aplicação Bot, iremos chamar a classe *RootLuisDialog* que terminamos de criar.
+
+```c#
+[BotAuthentication]
+public class MessagesController : ApiController
+{
+    public async Task<HttpResponseMessage> Post([FromBody]Activity activity)
+    {
+        if (activity.Type == ActivityTypes.Message)
+        {
+            await Conversation.SendAsync(activity, () => new RootLuisDialog());
+        }
+        else
+        {
+            HandleSystemMessage(activity);
+        }
+
+        var response = Request.CreateResponse(HttpStatusCode.OK);
+        return response;
+    }
+
+    private static void HandleSystemMessage(IActivity message)
+    {
+        if (message.Type == ActivityTypes.DeleteUserData)
+        {
+            // Implement user deletion here
+            // If we handle user deletion, return a real message
+        }
+        else if (message.Type == ActivityTypes.ConversationUpdate)
+        {
+            // Handle conversation state changes, like members being added and removed
+            // Use Activity.MembersAdded and Activity.MembersRemoved and Activity.Action for info
+            // Not available in all channels
+        }
+        else if (message.Type == ActivityTypes.ContactRelationUpdate)
+        {
+            // Handle add/remove from contact lists
+            // Activity.From + Activity.Action represent what happened
+        }
+        else if (message.Type == ActivityTypes.Typing)
+        {
+            // Handle knowing tha the user is typing
+        }
+        else if (message.Type == ActivityTypes.Ping)
+        {
+        }
+    }
+}
+```
+
+Após feita a mudança na Task Post, rode o projeto e abra o Microsoft Bot Framework Channel Emulator. Para configurar o emulador com seu projeto local, você pode ver [aqui](https://docs.botframework.com/en-us/csharp/builder/sdkreference/gettingstarted.html#emulator). 
+
+Se você quiser usar o emulador para testar com seu ambiente na nuvem, você pode acessar o link [Bot Framework Emulator](https://docs.botframework.com/en-us/tools/bot-framework-emulator/).
+
+![](./img/pic-013.png) 
+
+Desta forma já podemos ver o chat bot integrado com a aplicação LUIS. Quanto mais sentenças você treinar com o LUIS, mais natural será a interação do seu chat bot com os usuários. Após publicar sua aplicação na nuvem e incluir seu bot para canais como o Skype no portal do Bot Framework, você já poderá ver seu chat bot funcionando em ambiente de produção.
