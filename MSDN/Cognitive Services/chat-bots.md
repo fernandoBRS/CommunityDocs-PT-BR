@@ -8,9 +8,9 @@ Um chat bot é um programa que interage com usuários, simulando o comportamento
 
 Um dos grandes desafios de um chat bot é ser um assistente para o usuário com conversações de forma mais natural possível, resolvendo tarefas de forma simples e eficiente.
 
-![](./img/pic-001.png)
+A imagm abaixo mostra um exemplo de um chat bot no Skype:
 
-Figura 1 – Chat bot no Skype
+![](./img/pic-001.png)
 
 # O impacto nas redes sociais
 
@@ -18,13 +18,9 @@ O número de usuários ativos em aplicativos de mensagens (como Skype, Slack, Wh
 
 ![](./img/pic-002.png) 
 
-Figura 2 – Aplicativos de mensagem tem ultrapassado redes sociais
-
 Um estudo feito para o Facebook mostrou que a demanda de mensagens privadas tem sido muito superior em relação à demanda de posts. Ou seja, usuários estão usando interagindo mais através do aplicativo de mensagens do que dentro da própria rede social.
 
 ![](./img/pic-003.png) 
-
-Figura 3 – Demanda de posts e mensagens privadas
 
 Alta demanda por aplicativos de mensagens e volume de usuários crescendo cada vez mais. Ótimo momento para pensarmos em chat bots focados em negócios, não é mesmo? :)
 
@@ -38,8 +34,6 @@ Na página inicial do LUIS, é possível testar o funcionamento do serviço e vi
 
 ![](./img/pic-004.png) 
 
-Figura 4 – Demonstração de alguns cenários utilizando o LUIS
-
 **Intenções** (ou **Intents**) no LUIS são ações específicas desejadas para cada aplicação. Na imagem acima por exemplo, algumas intenções são: ligar e desligar todas as luzes, ligar a luz da esquerda e ligar a luz da direita.
 
 O LUIS analisa o contexto de cada frase e gera uma pontuação (**score**) para cada intenção criada pelo usuário. Imagine uma pontuação como algo que expressa quão confiante o LUIS está em identificar uma intenção como a ideal. 
@@ -48,8 +42,6 @@ A intenção que possuir a maior pontuação é a que tem a maior probabilidade 
 
 ![](./img/pic-005.png) 
 
-Figura 5 – Arquivo JSON gerado pelo LUIS
-
 Uma **Entidade** (ou **Entity**) é um conjunto de palavras-chave que o LUIS vai buscar dentro do contexto de uma frase que o usuário digita. Dentro de uma intenção podem ter várias entidades.
 
 Como exemplo, imagine uma entidade chamada *“animal”*. Essa entidade pode englobar palavras como* “cachorro”*, *“gato”*, *“papagaio”*, etc. Quando um usuário digitar uma frase em que essas palavras estiverem dentro de um contexto (como *“quero informações sobre meu cachorro”*), o LUIS identificará que a palavra pertence ao conjunto *“animal”*.
@@ -57,8 +49,6 @@ Como exemplo, imagine uma entidade chamada *“animal”*. Essa entidade pode en
 O LUIS permite criar modelos customizados de compreensão de linguagem, permitindo que as aplicações entendam comandos específicos de acordo com a necessidade. No caso da imagem abaixo, um modelo foi criado para duas situações: agendamento de salas e listagem de produtos. Desta forma, a aplicação entenderá apenas comandos para estas situações.
 
 ![](./img/pic-006.png) 
-
-Figura 6 – Intenções e Entidades no portal de uma aplicação LUIS
 
 Com essa visão geral sobre o LUIS podemos agora seguir com a visão geral do Microsoft Bot Framework REST API, que permitirá a integração do LUIS dentro da plataforma Bot Framework.
 
@@ -89,8 +79,6 @@ Você não precisa expor seu bot publicamente. Caso você necessite que o bot se
 
 ![](./img/pic-007.png) 
 
-Figura 7 – Adicionando um bot ao Skype
-
 # Preparando seu ambiente: Pré-requisitos
 
 Antes de iniciarmos o desenvolvimento do chat bot, assumiremos os seguintes pré requisitos:
@@ -98,13 +86,23 @@ Antes de iniciarmos o desenvolvimento do chat bot, assumiremos os seguintes pré
 * Criar um novo projeto em C# e registrar um bot, usando o Bot Framework Connector SDK .NET template. Para mais detalhes de como criar o projeto, você pode ver o tutorial [Getting started in .NET](https://docs.botframework.com/en-us/csharp/builder/sdkreference/gettingstarted.html).
 * Criar uma aplicação LUIS com cenário de uso para Bot e treiná-la com palavras e ações que você deseja para o seu projeto. Você pode encontrar um tutorial completo [aqui](https://www.luis.ai/Help). 
 
+# Integrando o LUIS com o chat bot
 
+Antes de iniciar a integração, será necessário obter os dados de duas chaves: **App Id** da aplicação LUIS e sua **Subscription Key**. Entre na página inicial do LUIS (https://www.luis.ai) e selecione **My Settings**. 
 
+![](./img/pic-008.png) 
 
+Após entrar nas configurações, selecione a aba **Subscription Keys** e copie a **Programmatic API Key**.
 
+![](./img/pic-009.png) 
 
+Volte para a página inicial do LUIS (https://www.luis.ai) e selecione sua aplicação com cenário e uso para Bot.
 
+![](./img/pic-010.png) 
 
+Após entrar na página inicial da aplicação, clique em **App Settings**, no canto superior esquerdo da página e copie o **App Id**.
+
+![](./img/pic-011.png) 
 
 
 
