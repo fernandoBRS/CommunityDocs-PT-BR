@@ -1,2 +1,2 @@
-# Repo for MSDN Articles - Brazilian Portuguese
-Repository for all technical articles created by Fernando de Oliveira.
+# Repo for Community Articles
+Repository for all technical articles created by Fernando de Oliveira in Brazilian Portuguese language.
