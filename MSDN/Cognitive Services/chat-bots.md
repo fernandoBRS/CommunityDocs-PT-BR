@@ -8,7 +8,7 @@ Um chat bot é um programa que interage com usuários, simulando o comportamento
 
 Um dos grandes desafios de um chat bot é ser um assistente para o usuário com conversações de forma mais natural possível, resolvendo tarefas de forma simples e eficiente.
 
-A imagm abaixo mostra um exemplo de um chat bot no Skype:
+A imagem abaixo mostra um exemplo de um chat bot no Skype:
 
 ![](./img/pic-001.png)
 
