@@ -1,2 +1,2 @@
-# CommunityDocs-PT-BR
-Repository for all technical articles under PT-BR locale.
+# Repo for MSDN Articles - Brazilian Portuguese
+Repository for all technical articles created by Fernando de Oliveira.
