@@ -205,3 +205,21 @@ Se você quiser usar o emulador para testar com seu ambiente na nuvem, você pod
 ![](./img/pic-013.png) 
 
 Desta forma já podemos ver o chat bot integrado com a aplicação LUIS. Quanto mais sentenças você treinar com o LUIS, mais natural será a interação do seu chat bot com os usuários. Após publicar sua aplicação na nuvem e incluir seu bot para canais como o Skype no portal do Bot Framework, você já poderá ver seu chat bot funcionando em ambiente de produção.
+
+# Considerações Finais
+
+Como podemos ver, a implementação de um bot com processamento de linguagem natural é relativamente simples. Esta integração nos abre uma grande possibilidade de automatização de processos e novos modelos de negócios.
+
+Porém, é importante tomar cuidado: chat bots não vieram para resolver todos os problemas! É sempre importante analisar cada situação e identificar se o chat bot trará valor para o seu caso ou não.
+
+Use, mas não abuse de processamento de linguagem natural. Vale ressaltar que o método não é 100% garantido em compreensão de contextos, o que pode gerar alguns resultados incorretos. Para melhorar a experiência do usuário e evitar este tipo de problema, use a linguagem natural junto com outros elementos que o Bot Framework oferece: Imagens, botões, formulários, etc. Desta forma você está guiando o usuário para um objetivo e mantendo a fluidez de uma conversação.
+
+# Referências
+
+Para mais informações sobre o funcionamento do Bot Framework e do LUIS, você pode acessar estes links:
+* [Bot Framework Documentation](https://docs.botframework.com/en-us/)
+* [LUIS Documentation](https://www.microsoft.com/cognitive-services/en-us/documentation)
+* [Build BOT with Microsoft Bot Framework Rest API](http://www.codeproject.com/Articles/1129036/Build-BOT-with-Microsoft-Bot-Framework-Rest-API)
+
+# Sobre o Autor
+Fernando de Oliveira (https://github.com/fernandobrs) é estagiário na Microsoft e estudante de Engenharia da Computação. Atualmente está desenvolvendo um livro digital focado em melhores práticas para bots ([UX Best Practices for Bot applications](https://aka.ms/ux-chatbots)).
