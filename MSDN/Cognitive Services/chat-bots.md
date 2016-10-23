@@ -18,7 +18,7 @@ O número de usuários ativos em aplicativos de mensagens (como Skype, Slack, Wh
 
 ![](./img/pic-002.png) 
 
-Um estudo feito para o Facebook mostrou que a demanda de mensagens privadas tem sido muito superior em relação à demanda de posts. Ou seja, usuários estão usando interagindo mais através do aplicativo de mensagens do que dentro da própria rede social.
+Um estudo feito para o Facebook mostrou que a demanda de mensagens privadas tem sido muito superior em relação à demanda de posts. Ou seja, usuários estão interagindo mais através do aplicativo de mensagens do que dentro da própria rede social.
 
 ![](./img/pic-003.png) 
 
