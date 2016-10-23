@@ -148,7 +148,7 @@ public async Task ListarAsync(IDialogContext context, LuisResult result)
 }
 ```
 
-Dentro da classe* MessagesController.cs*, que é criada automaticamente quando você cria uma nova aplicação Bot, iremos chamar a classe *RootLuisDialog* que terminamos de criar.
+Dentro da classe *MessagesController.cs*, que é criada automaticamente quando você cria uma nova aplicação Bot, iremos chamar a classe *RootLuisDialog* que terminamos de criar.
 
 ```c#
 [BotAuthentication]
