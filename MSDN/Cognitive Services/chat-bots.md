@@ -61,3 +61,50 @@ O LUIS permite criar modelos customizados de compreensão de linguagem, permitin
 Figura 6 – Intenções e Entidades no portal de uma aplicação LUIS
 
 Com essa visão geral sobre o LUIS podemos agora seguir com a visão geral do Microsoft Bot Framework REST API, que permitirá a integração do LUIS dentro da plataforma Bot Framework.
+
+# Apresentando o Microsoft Bot Framework
+
+O Microsoft Bot Framework é uma plataforma para desenvolvimento de bots. Fornece tudo o que é necessário para construir, conectar, gerenciar e publicar bots. Além disso, permite a comunicação com diversos canais (Skype, Slack, Facebook Messenger, Web Chat, entre outros), através de um serviço chamado Bot Connector.
+
+O Bot Framework é separado basicamente em três componentes: Bot Builder SDK, Developer Portal e Bot Directory.
+
+### Bot Builder SDK
+É um kit de desenvolvimento open source disponível no [GitHub](https://github.com/Microsoft/BotBuilder) que oferece todos os recursos necessários para construção de diálogos. Você pode construir seu bot com a plataforma .NET ou Node.js.
+
+O Bot Builder permite criar diversos tipos de interações: uso de imagens, cards, vídeos, áudios, documentos, chamadas (quando a plataforma permite, como o Skype), entre outros. 
+
+Além disso é posível usar um emulador de chat para testes da aplicação, sem a necessidade de fazer deploy em produção constantemente. Por padrão o SDK já vem com uma extensão para integrar com o LUIS com seu bot.
+
+### Developer Portal
+O portal do [Bot Framework](dev.botframework.com) para desenvolvedores permite registrar seu bot, conectá-lo a vários canais (como Skype, Slack, Telegram e Facebook Messenger), testar conexão, publicar e gerenciar bots.
+
+Por padrão, ao criar seu bot ele já estará configurado para funcionar no Skype e por WebChat. Caso você queira incluir seu bot em outro canal, como o Slack por exemplo, basta incluí-lo na sua lista de canais e configurar de acordo com um passo a passo que o portal oferece.
+
+Basta registrar o bot, configurar canais e publicar seu projeto. Ao publicar, o Bot Framework vai atualizar todos os canais que você escolheu, automaticamente. Muito simples! :)
+
+### Bot Directory
+O Bot Directory é um diretório público para todos os bots registrados e publicados no Developer Portal. Com esse diretório, os usuários poderão encontrar e adicionar seus bots para incluir em seus aplicativos de mensagens.
+
+Você não precisa expor seu bot publicamente. Caso você necessite que o bot seja para uso restrito, o Developer Portal oferece botões para que você possa copiar a URL do seu bot e distribuir para quem precisa de acesso.
+
+![](./img/pic-007.png) 
+
+Figura 7 – Adicionando um bot ao Skype
+
+# Preparando seu ambiente: Pré-requisitos
+
+Antes de iniciarmos o desenvolvimento do chat bot, assumiremos os seguintes pré requisitos:
+
+* Criar um novo projeto em C# e registrar um bot, usando o Bot Framework Connector SDK .NET template. Para mais detalhes de como criar o projeto, você pode ver o tutorial [Getting started in .NET](https://docs.botframework.com/en-us/csharp/builder/sdkreference/gettingstarted.html).
+* Criar uma aplicação LUIS com cenário de uso para Bot e treiná-la com palavras e ações que você deseja para o seu projeto. Você pode encontrar um tutorial completo [aqui](https://www.luis.ai/Help). 
+
+
+
+
+
+
+
+
+
+
+
